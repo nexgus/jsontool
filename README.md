@@ -1,3 +1,2 @@
 # jsontool
-`jsontool` is a toolset for JSON operations.
-
+`jsontool` is a GoLang Library for JSON oprerations.
