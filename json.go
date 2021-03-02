@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 )
 
-// JSONDumpB dump a JSON structure to a slice of byte.
-func JSONDumpB(j interface{}, indent ...string) ([]byte, error) {
+// DumpB dump a JSON structure to a slice of byte.
+func DumpB(j interface{}, indent ...string) ([]byte, error) {
 	var (
 		b   []byte
 		err error
@@ -19,8 +19,8 @@ func JSONDumpB(j interface{}, indent ...string) ([]byte, error) {
 	return b, err
 }
 
-// JSONDumpF dump a JSON structrue to a file.
-func JSONDumpF(filepath string, j interface{}, indent ...string) error {
+// DumpF dump a JSON structrue to a file.
+func DumpF(filepath string, j interface{}, indent ...string) error {
 	var (
 		b   []byte
 		err error
@@ -37,8 +37,8 @@ func JSONDumpF(filepath string, j interface{}, indent ...string) error {
 	return err
 }
 
-// JSONDumpS dump a JSON structrue to a string.
-func JSONDumpS(j interface{}, indent ...string) string {
+// DumpS dump a JSON structrue to a string.
+func DumpS(j interface{}, indent ...string) string {
 	var (
 		b   []byte
 		err error
@@ -54,26 +54,26 @@ func JSONDumpS(j interface{}, indent ...string) string {
 	return string(b)
 }
 
-// JSONLoadB loads JSON from a slice of byte.
-func JSONLoadB(b []byte) (interface{}, error) {
+// LoadB loads JSON from a slice of byte.
+func LoadB(b []byte) (interface{}, error) {
 	var j interface{}
 	err := json.Unmarshal(b, &j)
 	return j, err
 }
 
-// JSONLoadF load JSON from a file.
-func JSONLoadF(filepath string) (interface{}, error) {
+// LoadF load JSON from a file.
+func LoadF(filepath string) (interface{}, error) {
 	b, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		return nil, err
 	}
 
-	j, err := JSONLoadB(b)
+	j, err := LoadB(b)
 	return j, err
 }
 
-// JSONLoadS loads JSON from a string.
-func JSONLoadS(s string) (interface{}, error) {
-	j, err := JSONLoadB([]byte(s))
+// LoadS loads JSON from a string.
+func LoadS(s string) (interface{}, error) {
+	j, err := LoadB([]byte(s))
 	return j, err
 }
